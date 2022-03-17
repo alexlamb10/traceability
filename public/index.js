@@ -6,7 +6,7 @@ let listSection = document.getElementById('list-of-choices')
 
 
 
-let baseURL = "http://localhost:5055"
+let baseURL = "http://localhost:5055" || "https://f19-traceability.herokuapp.com"
 
 function displayPredictions(arr){
     list.innerHTML = ''
