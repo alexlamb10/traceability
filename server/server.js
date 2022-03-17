@@ -32,10 +32,10 @@ app.post("/api/choices", (req, res) => {
                 people.push(req.body)
                 res.status(200).send(people)
         }else if(userName === ''){
-            rollbar.error('No name provided')
+            rollbar.critical('No name provided')
             res.status(400).send('You must enter a name')
         } else if (usersChamp === ''){
-            rollbar.error('No champion provided')
+            rollbar.warning('No champion provided')
             res.status(400).send('You must enter a Champion')
         }
     } catch(err) {

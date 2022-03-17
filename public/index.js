@@ -6,7 +6,7 @@ let listSection = document.getElementById('list-of-choices')
 
 
 
-let baseURL = "http://localhost:5055" || "https://f19-traceability.herokuapp.com"
+let baseURL = "https://f19-traceability.herokuapp.com" || "http://localhost:5055"  
 
 function displayPredictions(arr){
     list.innerHTML = ''
@@ -32,7 +32,7 @@ function submitPrediction () {
         usersChamp: usersChamp.value
     }
     
-    axios.post(`/api/choices`, body)
+    axios.post(`${baseURL}/api/choices`, body)
     .then(res => {
         
         displayPredictions(res.data)
