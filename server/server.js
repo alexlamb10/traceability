@@ -19,6 +19,32 @@ rollbar.log('Hello world!')
 
 app.use(express.static(path.join(__dirname, "../public")))
 
+
+let people = []
+
+app.post("/api/choices", (req, res) => {
+    let {userName, usersChamp} = req.body
+    
+
+    try {
+        if(userName !== '' && usersChamp !== ''){
+                rollbar.log('User entered a champion')
+                people.push(req.body)
+                res.status(200).send(people)
+        }else if(userName === ''){
+            rollbar.error('No name provided')
+            res.status(400).send('You must enter a name')
+        } else if (usersChamp === ''){
+            rollbar.error('No champion provided')
+            res.status(400).send('You must enter a Champion')
+        }
+    } catch(err) {
+        console.log(err)
+    }
+})
+
+app.use(rollbar.errorHandler());
+
 const port = process.env.PORT || 5055
 
 app.listen(port, () => {
