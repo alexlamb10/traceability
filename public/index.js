@@ -32,7 +32,7 @@ function submitPrediction () {
         usersChamp: usersChamp.value
     }
     
-    axios.post(`${baseURL}/api/choices`, body)
+    axios.post(`/api/choices`, body)
     .then(res => {
         
         displayPredictions(res.data)
